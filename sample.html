@@ -12,10 +12,30 @@
         }
     </style>
     <script>
+
+      function errorMessage(){
+         const form = document.form1;
+         const names = form.names.value;
+
+         const data ={};
+        console.log(names);
+        console.log(names.length);
+        
+        
+
+        // const message = 'error'
+        // if(names.length < num.length){
+        //     // console.log(message);
+        //     alert(message);
+        // }
+        // return message
+      }
+
       /**
        * メンバーを抽選する1
        */
       function chooseMember() {
+        errorMessage();
         const form = document.form1;
         const names = form.names.value;
         const list = names.split(',');
