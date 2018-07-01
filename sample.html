@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>簡易抽選システム</title>
     <link rel="stylesheet" href="main.css">
-    <script type="text/javascript" src="main.js"></script>
 </head>
 <body>
 <h1>簡易抽選システム</h1>
@@ -13,11 +12,10 @@
     <fieldset>
         <legend id="applicantNumber">応募者N人中、M人を選ぶ</legend>
         <p><label>応募者一覧（カンマ区切りで入力）<input type="text" name="names" required></label></p>
-        <p><label>当選者数<input type="number" name="num" required></label></p>
-
+        <p><label>当選者数<input type="number" id="num"  name="num"  required></label></p>
     </fieldset>
     <div class="choiceButton">
-    <button type="submit" id="submit">抽選する</button>
+    <button type="submit" id="submit" class="hoge" onclick="onButtonClick();">抽選する</button>
     </div>
 </form>
 
@@ -25,5 +23,7 @@
     <h2>当選者一覧</h2>
     <div id="js-list"></div>
 </div>
+    <script type="text/javascript" src="main.js"></script>
+
 </body>
 </html>
