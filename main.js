@@ -1,17 +1,17 @@
 function onSubmitClick(){
   if (validation()){
-    var winners = chooseMember()
-    output(winners) 
+    var winners = chooseMember();
+    output(winners);
   } else {
-    alert('当選者数が多すぎます')
+    alert('当選者数が多すぎます');
   }
 }
 
 function validation(){
-  var names = document.getElementById('names').value
-  var num = document.getElementById('num').value
+  var names = document.getElementById('names').value;
+  var num = document.getElementById('num').value;
 
-  var list = names.split(',')
+  var list = names.split(',');
 
   if(parseInt(num) <= list.length){
     return true;
@@ -20,15 +20,13 @@ function validation(){
   }
 }
 
-/**
-* メンバーを抽選する1
-*/
+  //メンバーを抽選する1
 function chooseMember() {
     
-  var names = document.getElementById('names').value
-  var list = names.split(',')
+  var names = document.getElementById('names').value;
+  var list = names.split(',');
   
-  var count = document.getElementById('num').value
+  var count = document.getElementById('num').value;
 
   let winners = [];
 
@@ -45,7 +43,7 @@ function chooseMember() {
     // 応募者リストから、当選したメンバーを除外する
     list.splice(chosen_index, 1);
   }
-  return winners
+  return winners;
 }
 
 /**
@@ -62,6 +60,5 @@ function output(winners) {
     li.innerText = winners[i]+' さん';
     ul.appendChild(li);
   }
-
   elem.appendChild(ul);
 }
