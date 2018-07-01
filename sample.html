@@ -8,9 +8,24 @@
             width: 50%;
             padding: 5px;
             margin: 5px;
-            font-size: 2em;
+            font-size: 1em;
         }
     </style>
+</head>
+<body>
+<h1>簡易抽選システム</h1>
+<form name="form1" onsubmit="chooseMember();return false;">
+    <fieldset>
+        <legend>応募者N人中、M人を選ぶ</legend>
+        <p><label>応募者一覧（カンマ区切りで入力）<input type="text" name="names" placeholder="Aさん,Bさん,Cさん" required></label></p>
+        <p><label>当選者数<input type="number" name="num" min="1" value="1" required></label></p>
+    </fieldset>
+    <button type="submit" id="submit" style="color:#FFFFFF;font-size:1em;font-weight:bold;padding:1em 1em;background-color:#01A9DB" ;>抽選を実行する</button>
+</form>
+<div>
+    <h2>当選者一覧</h2>
+    <div id="js-list"></div>
+</div>
     <script>
       /**
        * メンバーを抽選する
@@ -19,26 +34,25 @@
         const form = document.form1;
         const names = form.names.value;
         const list = names.split(',');
-
         const count = form.num.value;
         let winners = [];
-
         // 指定された当選者数分だけ for で回す
-        for (let i = 0; i < count; i++) {
+        
+        if (list.length >= count){
+            for (let i = 0; i < count; i++) {
           /**
            * 乱数の取得に関して、このサイトがわかりやすいです。
            * https://www.sejuku.net/blog/22432
            */
-          const chosen_index = Math.floor(Math.random() * list.length);
+            const chosen_index = Math.floor(Math.random() * list.length);
           // 当選者を当選者用配列に詰める
-          winners.push(list[chosen_index]);
-
+            winners.push(list[chosen_index]);
           // 応募者リストから、当選したメンバーを除外する
-          list.splice(chosen_index, 1);
-        }
-        output(winners);
-      }
-
+            list.splice(chosen_index, 1);
+            }
+            output(winners);
+            }
+            }
       /**
        * HTML タグを生成して出力する
        * @param {string[]} winners 当選者の配列
@@ -46,35 +60,17 @@
       function output(winners) {
         let elem = document.getElementById('js-list');
         elem.innerText = '';
-
         let ul = document.createElement('ul');
         for (let i = 0; i < winners.length; i++) {
           let li = document.createElement('li');
           li.innerText = winners[i];
           ul.appendChild(li);
         }
-
         elem.appendChild(ul);
       }
-
+      // function tyusen() {
+      //   alert('抽選を完了しました。');
+      // }
     </script>
-</head>
-<body>
-<h1>簡易抽選システム</h1>
-
-<form name="form1" onsubmit="chooseMember();return false;">
-    <fieldset>
-        <legend>応募者N人中、M人を選ぶ</legend>
-        <p><label>応募者一覧（カンマ区切りで入力）<input type="text" name="names"></label></p>
-        <p><label>当選者数<input type="number" name="num"></label></p>
-
-    </fieldset>
-    <button type="submit" id="submit">抽選する</button>
-</form>
-
-<div>
-    <h2>当選者一覧</h2>
-    <div id="js-list"></div>
-</div>
 </body>
 </html>
