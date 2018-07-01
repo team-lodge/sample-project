@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <title>簡易抽選システム</title>
     <style>
         input {
@@ -15,7 +16,10 @@
       /**
        * メンバーを抽選する
        */
+
       function chooseMember() {
+        const answer = window.confirm('入力に間違いはないですか？');
+        if (answer){
         const form = document.form1;
         const names = form.names.value;
         const list = names.split(',');
@@ -37,6 +41,14 @@
           list.splice(chosen_index, 1);
         }
         output(winners);
+
+        }else{
+          return false;
+
+        }
+
+        return false;
+        
       }
 
       /**
@@ -52,29 +64,97 @@
           let li = document.createElement('li');
           li.innerText = winners[i];
           ul.appendChild(li);
+
         }
 
         elem.appendChild(ul);
+
       }
 
     </script>
 </head>
 <body>
-<h1>簡易抽選システム</h1>
+  <h1 style="margin-left:50px;"><font color="#696969">簡易抽選システム</font></h1>
+  <form name="form1" onsubmit="chooseMember();return false;">
 
-<form name="form1" onsubmit="chooseMember();return false;">
-    <fieldset>
-        <legend>応募者N人中、M人を選ぶ</legend>
-        <p><label>応募者一覧（カンマ区切りで入力）<input type="text" name="names"></label></p>
-        <p><label>当選者数<input type="number" name="num"></label></p>
+      <div style="
+            -webkit-box-sizing:border-box;
+            box-sizing: border-box;
+            width: 70%
+            color :#666;
+            background-color: #f0f8ff;
+            padding: .7em;
+            margin: 1em 0 2em;
+            border: 3px solid #6495ed;
+            border-radius: 15px;">
 
-    </fieldset>
-    <button type="submit" id="submit">抽選する</button>
+        <span><font color="#696969">応募者N人中、M人を選ぶ</font></lavel>
+
+        <p style=" 
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            width:55%;
+            color: #666;
+            background-color: white;
+            font-size: 15px;
+            padding:.7em;
+            margin-left:50px;
+            border: 3px solid #eee9ed;
+            border-radius: 10px">
+      <label>応募者一覧
+          <span><input type="text" name="names" placeholder="カンマ区切りで入力"
+            style="width: 400px;"></span>
+      </label></p>
+          <p style="
+              -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+              width:30%;
+              color: #666;
+              background-color: white;
+              padding:.7em;
+              margin-left:50px;
+              border: 3px solid #eee9ed;
+              border-radius: 15px">
+            <span><label>当選者数<input type="number" name="num" style="width:200px;height:50px;">
+            </label></p></span>
+
+        
+
+    <br>
+    <div style="margin-left:50px;margin-right:10%;">
+      <button type="submit" id="submit" 
+            style="
+            width:40%;
+            padding:10px;
+            font-size:30px;
+            background-color: #4169e1;
+            color: white;
+            border: 1px solid #bbb
+            border-radius:15px;
+            box-shadow: -1px -1px 1px #fff;" >抽選する</button>
+    </div>
 </form>
 
 <div>
-    <h2>当選者一覧</h2>
-    <div id="js-list"></div>
+    <h2 style="color:#6495ed; margin-left:50px;">当選者一覧</h2>
+    
+    <marquee behavior="alternate" direction="up" height="60" >
+      <div id="js-list" style="margin-left:50px; background-color="#b0c4de";></div></marquee>
+
+  
+  </div>    
+
+
+
+
+
+      <div class="icon02" style="float:center;">
+       <br>
+        <a href="#"><i class="fab fa-twitter"></i> twitter</a>
+      </div>
+    
+
+
 </div>
 </body>
 </html>
