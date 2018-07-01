@@ -8,9 +8,9 @@ function onSubmitClick(){
 }
 
 function validation(){
-  var names = document.querySelector('.names').value
-  var num = document.querySelector('.num').value
-
+  var names = document.getElementById('names').value
+  var num = document.getElementById('num').value
+  
   var list = names.split(',')
   if(num <= list.length){
     return true;
@@ -24,10 +24,10 @@ function validation(){
 */
 function chooseMember() {
     
-  var names = document.querySelector('.names').value
+  var names = document.getElementById('names').value
   var list = names.split(',')
   
-  var count = document.querySelector('.num').value
+  var count = document.getElementById('num').value
 
   let winners = [];
 
