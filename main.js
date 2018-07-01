@@ -1,10 +1,18 @@
-function onButtonClick(){
-  var names = document.form1.names.value;
-  var num = document.form1.num.value;
+function onSubmitClick(){
+  if (validation()){
+    var winners = chooseMember()
+    output(winners) 
+  } else {
+    alert('当選者数が多すぎます')
+  }
+}
+
+function validation(){
+  var names = document.querySelector('.names').value
+  var num = document.querySelector('.num').value
 
   var list = names.split(',')
-
-  if(num < list.length){
+  if(num <= list.length){
     return true;
   } else {
     return false;
@@ -15,12 +23,12 @@ function onButtonClick(){
 * メンバーを抽選する1
 */
 function chooseMember() {
+    
+  var names = document.querySelector('.names').value
+  var list = names.split(',')
   
-  const form = document.form1;
-  const names = form.names.value;
-  const list = names.split(',');
+  var count = document.querySelector('.num').value
 
-  const count = form.num.value;
   let winners = [];
 
   // 指定された当選者数分だけ for で回す
@@ -36,7 +44,7 @@ function chooseMember() {
     // 応募者リストから、当選したメンバーを除外する
     list.splice(chosen_index, 1);
   }
-  output(winners);
+  return winners
 }
 
 /**
@@ -55,15 +63,3 @@ function output(winners) {
 
   elem.appendChild(ul);
 }
-
-var hoge = document.querySelector('.hoge')
-
-hoge.addEventListener('click', ()=>{
-
-  if(onButtonClick() === false){
-    alert('当選者数が多すぎます')
-  } else {
-
-
-  }
-})
