@@ -10,9 +10,10 @@ function onSubmitClick(){
 function validation(){
   var names = document.getElementById('names').value
   var num = document.getElementById('num').value
-  
+
   var list = names.split(',')
-  if(num <= list.length){
+
+  if(parseInt(num) <= list.length){
     return true;
   } else {
     return false;
