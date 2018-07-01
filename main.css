@@ -48,5 +48,8 @@ fieldset{
 #js-list{
     font-size: 1.3em;
     text-align: center;
+}
+.winnersList {
     list-style: none;
+
 }

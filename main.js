@@ -57,6 +57,7 @@ function output(winners) {
   let ul = document.createElement('ul');
   for (let i = 0; i < winners.length; i++) {
     let li = document.createElement('li');
+    li.className = 'winnersList';
     li.innerText = winners[i]+' さん';
     ul.appendChild(li);
   }
